@@ -1,0 +1,301 @@
+#VRML_SIM R2019a utf8
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.9222581775236783 0.3657158580916747 0.125266775846485 0.7112180852721157
+  position 0.7539021141475637 2.4553743027636328 2.2256832864153977
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+}
+Solid {
+  children [
+    DEF GR_BASE Group {
+      children [
+        Transform {
+          translation 0 1 0
+          rotation 0 0.7071067811865475 0.7071067811865475 0
+          children [
+            Shape {
+              appearance DEF BASE_COLOR PBRAppearance {
+                baseColor 0.9372549019607843 0.1607843137254902 0.1607843137254902
+                roughness 1
+                metalness 0
+              }
+              geometry DEF SIZE_BASE Box {
+                size 0.5 0.05 0.5
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.25 0.4961208719054811 -0.20612087190548137
+          rotation 0.3333333333333333 -0.6666666666666666 -0.6666666666666666 0.5
+          children [
+            Shape {
+              appearance USE BASE_COLOR
+              geometry DEF STICKS_SIZE Cylinder {
+                height 1.05
+                radius 0.03
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.25 0.4961208719054811 0.206121
+          rotation -0.33333288888900003 0.6666667777776667 -0.6666667777776667 0.5
+          children [
+            Shape {
+              appearance USE BASE_COLOR
+              geometry USE STICKS_SIZE
+            }
+          ]
+        }
+        Transform {
+          translation 0.25 0.4961208719054811 0.206121
+          rotation -0.33333288888900003 -0.6666667777776667 0.6666667777776667 0.5
+          children [
+            Shape {
+              appearance USE BASE_COLOR
+              geometry USE STICKS_SIZE
+            }
+          ]
+        }
+        Transform {
+          translation 0.25 0.4961208719054811 -0.20612087190548137
+          rotation 0.33333288888900003 0.6666667777776667 0.6666667777776667 0.5
+          children [
+            Shape {
+              appearance USE BASE_COLOR
+              geometry USE STICKS_SIZE
+            }
+          ]
+        }
+        Transform {
+          translation 0 0.5 -0.2
+          rotation 0 0 1 1.57
+          children [
+            Shape {
+              appearance USE BASE_COLOR
+              geometry DEF MIDDLE Cylinder {
+                height 0.5
+                radius 0.01
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0 0.5 0.2
+          rotation 0 0 1 1.57
+          children [
+            Shape {
+              appearance USE BASE_COLOR
+              geometry USE MIDDLE
+            }
+          ]
+        }
+        Transform {
+          translation 0.25 0.5 0
+          rotation 1 0 0 1.57
+          children [
+            Shape {
+              appearance USE BASE_COLOR
+              geometry DEF MIDDLE_2 Cylinder {
+                height 0.4
+                radius 0.01
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.25 0.5 0
+          rotation 1 0 0 1.57
+          children [
+            Shape {
+              appearance USE BASE_COLOR
+              geometry USE MIDDLE_2
+            }
+          ]
+        }
+      ]
+    }
+    DEF GR_TOP Group {
+      children [
+        Transform {
+          translation 0 1.12 0
+          children [
+            Shape {
+              appearance DEF TOP_COLOR PBRAppearance {
+                baseColor 0.5411764705882353 0.8862745098039215 0.20392156862745098
+                roughness 1
+                metalness 0
+              }
+              geometry Box {
+                size 0.05 0.2 0.1
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0 1.27 0
+          rotation 0 0 1 1.57
+          children [
+            Shape {
+              appearance USE TOP_COLOR
+              geometry DEF COIL Cylinder {
+                height 0.2
+                radius 0.05
+              }
+            }
+          ]
+        }
+        HingeJoint {
+          jointParameters HingeJointParameters {
+            axis 0 1 0
+            anchor -0.1 1.27 0
+            minStop 0.785
+            maxStop -0.785
+          }
+          endPoint Solid {
+            translation -0.3 1.27 0
+            rotation 0 0 1 1.57
+            children [
+              Shape {
+                appearance USE TOP_COLOR
+                geometry Cylinder {
+                  height 0.4
+                  radius 0.01
+                }
+              }
+              Transform {
+                translation 0 0.15 0
+                children [
+                  Shape {
+                    appearance USE TOP_COLOR
+                    geometry Box {
+                      size 0.05 0.1 0.1
+                    }
+                  }
+                ]
+              }
+            ]
+            physics Physics {
+            }
+          }
+        }
+        Transform {
+          translation 0.1 1.27 0
+          rotation 0 0 1 1.57
+          children [
+            HingeJoint {
+              jointParameters HingeJointParameters {
+                axis 0 1 0
+              }
+              endPoint Solid {
+                children [
+                  Shape {
+                    appearance USE TOP_COLOR
+                    geometry Cylinder {
+                      height 0.01
+                      radius 0.07
+                    }
+                  }
+                  DEF MILLS Group {
+                    children [
+                      Transform {
+                        translation 0.13 0 0
+                        children [
+                          Shape {
+                            appearance USE TOP_COLOR
+                            geometry DEF MILL Box {
+                              size 0.1 0.02 0.05
+                            }
+                          }
+                        ]
+                      }
+                      Transform {
+                        translation -0.13 0 0
+                        children [
+                          Shape {
+                            appearance USE TOP_COLOR
+                            geometry USE MILL
+                          }
+                        ]
+                      }
+                      Transform {
+                        translation 0 0 0.13
+                        rotation 0 1 0 1.57
+                        children [
+                          Shape {
+                            appearance USE TOP_COLOR
+                            geometry USE MILL
+                          }
+                        ]
+                      }
+                      Transform {
+                        translation 0 0 -0.13
+                        rotation 0 1 0 1.57
+                        children [
+                          Shape {
+                            appearance USE TOP_COLOR
+                            geometry USE MILL
+                          }
+                        ]
+                      }
+                      Transform {
+                        translation 0.1 0 -0.1
+                        rotation 0 1 0 0.785
+                        children [
+                          Shape {
+                            appearance USE TOP_COLOR
+                            geometry USE MILL
+                          }
+                        ]
+                      }
+                      Transform {
+                        translation 0.1 0 0.1
+                        rotation 0 1 0 -0.785
+                        children [
+                          Shape {
+                            appearance USE TOP_COLOR
+                            geometry USE MILL
+                          }
+                        ]
+                      }
+                      Transform {
+                        translation -0.1 0 0.1
+                        rotation 0 1 0 0.785
+                        children [
+                          Shape {
+                            appearance USE TOP_COLOR
+                            geometry USE MILL
+                          }
+                        ]
+                      }
+                      Transform {
+                        translation -0.1 0 -0.1
+                        rotation 0 1 0 -0.785
+                        children [
+                          Shape {
+                            appearance USE TOP_COLOR
+                            geometry USE MILL
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+                name "solid(1)"
+                physics Physics {
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
